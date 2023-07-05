@@ -8,6 +8,7 @@ import MovieCards from "../MovieCards";
 const Home = () => {
   const [movieData, setMovieData] = useContext(MovieContext);
   const [pageNo, setPageNo] = useState(1);
+  const [search, setSearch] = useState("");
 
   const fetchMovieData = async (page) => {
     const movie = await movieApi.fetchMovie(page);
@@ -57,9 +58,11 @@ const Home = () => {
             className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8"
             hasMore={true}
           >
-            {movieData?.contentItems?.content.map((item, index) => (
-              <MovieCards item={item} key={`${item.name}-${index}`} />
-            ))}
+            {movieData?.contentItems?.content
+              .filter((item) => item.name.includes(search))
+              .map((item, index) => (
+                <MovieCards item={item} key={`${item.name}-${index}`} />
+              ))}
           </InfiniteScroll>
         )}
       </div>

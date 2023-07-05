@@ -8,14 +8,19 @@ const MoveiCards = ({ item }) => {
           item?.["poster-image"]
         }`}
         alt={item.name}
-        className="rounded"
+        className="rounded w-40"
         onError={(item) => {
           item.target.src = `${
             import.meta.env.VITE_BASE_URL
           }/images/placeholder_for_missing_posters.png`;
         }}
       />
-      <h3 className="movie-title">{item.name}</h3>
+      <h3
+        className="movie-title text-ellipsis whitespace-pre w-full overflow-hidden"
+        title={item.name}
+      >
+        {item.name}
+      </h3>
     </div>
   );
 };
