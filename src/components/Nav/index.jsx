@@ -7,14 +7,14 @@ const Nav = ({ title }) => {
         <img
           src="https://test.create.diagnal.com/images/Back.png"
           alt="back-button"
-          className="w-6 h-6"
+          className="md:w-6 md:h-6 h-4 w-4"
         />
-        <h2 className="title text-2xl">{title}</h2>
+        <h2 className="title text-lg md:text-2xl">{title}</h2>
       </div>
       <img
         src="https://test.create.diagnal.com/images/search.png"
         alt="search"
-        className="w-6 h-6"
+        className="md:w-6 md:h-6 h-4 w-4"
       />
     </div>
   );
