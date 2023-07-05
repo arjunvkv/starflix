@@ -2,13 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import movieApi from "../../api/movieApi";
 import Nav from "../Nav";
-import { MovieContext } from "../../context/ApiContext";
+import { MovieContext, SearchContext } from "../../context/ApiContext";
 import MovieCards from "../MovieCards";
 
 const Home = () => {
   const [movieData, setMovieData] = useContext(MovieContext);
+  const [searchText] = useContext(SearchContext);
   const [pageNo, setPageNo] = useState(1);
-  const [search, setSearch] = useState("");
 
   const fetchMovieData = async (page) => {
     const movie = await movieApi.fetchMovie(page);
@@ -32,7 +32,6 @@ const Home = () => {
   }, [pageNo]);
 
   const fetchMoreData = () => {
-    console.log("hai");
     if (
       movieData?.contentItems?.content.length >=
       movieData["total-content-items"]
@@ -40,17 +39,22 @@ const Home = () => {
       return;
     setPageNo(pageNo + 1);
   };
+  const isSearchEmpty = () => {
+    if (
+      searchText.length &&
+      !movieData?.contentItems?.content.filter((item) =>
+        item.name.toLowerCase().includes(searchText.toLowerCase())
+      ).length
+    ) {
+      return <h2 className="text-center p-5">No search results found.</h2>;
+    }
+  };
 
-  useEffect(() => {
-    console.log("movieData", movieData);
-    console.log(
-      movieData?.contentItems?.content.length < movieData["total-content-items"]
-    );
-  }, [movieData]);
   return (
     <>
       <Nav title={movieData.title} />
       <div className="p-1 md:p-2">
+        {isSearchEmpty()}
         {movieData?.contentItems?.content && (
           <InfiniteScroll
             dataLength={movieData?.contentItems?.content.length}
@@ -59,7 +63,9 @@ const Home = () => {
             hasMore={true}
           >
             {movieData?.contentItems?.content
-              .filter((item) => item.name.includes(search))
+              .filter((item) =>
+                item.name.toLowerCase().includes(searchText.toLowerCase())
+              )
               .map((item, index) => (
                 <MovieCards item={item} key={`${item.name}-${index}`} />
               ))}

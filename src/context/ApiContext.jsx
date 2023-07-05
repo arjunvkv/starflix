@@ -1,6 +1,7 @@
 import React, { createContext, useState } from "react";
 
 export const MovieContext = createContext();
+export const SearchContext = createContext();
 
 export const MovieContextProvider = ({ children }) => {
   const [movieData, setMovieData] = useState({
@@ -8,9 +9,12 @@ export const MovieContextProvider = ({ children }) => {
       content: [],
     },
   });
+  const [searchText, setSearchText] = useState("");
   return (
     <MovieContext.Provider value={[movieData, setMovieData]}>
-      {children}
+      <SearchContext.Provider value={[searchText, setSearchText]}>
+        {children}
+      </SearchContext.Provider>
     </MovieContext.Provider>
   );
 };
