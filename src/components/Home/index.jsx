@@ -59,7 +59,7 @@ const Home = () => {
           <InfiniteScroll
             dataLength={movieData?.contentItems?.content.length}
             next={fetchMoreData}
-            className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8"
+            className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 place-items-center"
             hasMore={true}
           >
             {movieData?.contentItems?.content

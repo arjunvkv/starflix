@@ -2,13 +2,13 @@ import React from "react";
 
 const MoveiCards = ({ item }) => {
   return (
-    <div className="p-1 md:p-2 items-start space-y-1 flex flex-col justify-center">
+    <div className="p-1 md:p-2 items-start space-y-1 flex flex-col justify-center w-fit">
       <img
         src={`${import.meta.env.VITE_BASE_URL}/images/${
           item?.["poster-image"]
         }`}
         alt={item.name}
-        className="rounded w-40"
+        className="rounded w-auto"
         onError={(item) => {
           item.target.src = `${
             import.meta.env.VITE_BASE_URL
