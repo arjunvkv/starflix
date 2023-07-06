@@ -6,16 +6,18 @@ const Nav = ({ title }) => {
   const [isSearch, setIsSearch] = useState(false);
   const [searchText, setSearchText] = useContext(SearchContext);
 
+  const reset = () => {
+    setIsSearch(false);
+    setSearchText("");
+    window.scrollTo(0, 0);
+  };
+
   return (
     <>
       <div className="sticky top-0 z-10">
         <div className="p-3 flex px-5 justify-between items-center bg-nav-bg-img">
           <div className="title-container flex items-center gap-3">
-            <button
-              onClick={() => {
-                window.scrollTo(0, 0);
-              }}
-            >
+            <button onClick={reset}>
               <img
                 src={`${import.meta.env.VITE_BASE_URL}/images/Back.png`}
                 alt="back-button"
@@ -29,6 +31,7 @@ const Nav = ({ title }) => {
               type="text"
               className="w-80 hidden lg:flex rounded p-1 px-2 outline-gray-700 text-black font-bold"
               placeholder="Search for a movie, tv show...."
+              value={searchText}
               onChange={(e) => {
                 setSearchText(e.target.value);
               }}
@@ -36,6 +39,7 @@ const Nav = ({ title }) => {
             <button
               onClick={() => {
                 setIsSearch(!isSearch);
+                setSearchText("");
               }}
             >
               <img
