@@ -11,7 +11,11 @@ const Nav = ({ title }) => {
       <div className="sticky top-0 z-10">
         <div className="p-3 flex px-5 justify-between items-center bg-nav-bg-img">
           <div className="title-container flex items-center gap-3">
-            <button>
+            <button
+              onClick={() => {
+                window.scrollTo(0, 0);
+              }}
+            >
               <img
                 src="https://test.create.diagnal.com/images/Back.png"
                 alt="back-button"
