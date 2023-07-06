@@ -17,7 +17,7 @@ const Nav = ({ title }) => {
               }}
             >
               <img
-                src="https://test.create.diagnal.com/images/Back.png"
+                src={`${import.meta.env.VITE_BASE_URL}/images/Back.png`}
                 alt="back-button"
                 className="md:w-6 md:h-6 h-4 w-4"
               />
@@ -39,7 +39,7 @@ const Nav = ({ title }) => {
               }}
             >
               <img
-                src="https://test.create.diagnal.com/images/search.png"
+                src={`${import.meta.env.VITE_BASE_URL}/images/search.png`}
                 alt="search"
                 className="md:w-6 md:h-6 h-4 w-4"
               />
