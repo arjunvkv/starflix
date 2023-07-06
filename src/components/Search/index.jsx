@@ -11,7 +11,7 @@ const Search = ({ isOpen }) => {
           <input
             type="text"
             className="w-full rounded p-1 px-2 outline-gray-700 text-black font-bold"
-            placeholder="Search"
+            placeholder="Search for a movie, tv show...."
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
