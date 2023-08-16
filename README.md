@@ -10,9 +10,9 @@ In the project directory, you can run:
 
 ### `npm run dev`
 
-### Deployment
+*/ ### Deployment
 
-The application is deployed to https://arjunvkv.github.io/starflix/
+The application is deployed to https://arjunvkv.github.io/starflix/ /*
 
 ### Description
 
